@@ -9,12 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-
-
+    
+    @IBAction func didTapButton() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "SecondViewController") {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
+class SecondViewController: UIViewController {
+    
+    private var searchBar = UISearchBar()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        searchBar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        navigationItem.titleView = searchBar
+    }
+}
